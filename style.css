@@ -1,0 +1,506 @@
+/* 
+  Mid-Fidelity Prototype CSS
+  Applied Custom Palette:
+  - Primary Dark: #2D4B73
+  - Secondary Slate: #4F758C
+  - Warm Sand Accent: #F2BE7E
+  - Deep Rust Brown: #8C4332
+  - Terracotta Red: #D94436
+*/
+
+:root {
+  --bg-color: #f4f6f8;
+  --card-bg: #ffffff;
+  --border-color: #d0d7de;
+  --primary-color: #2D4B73;
+  --primary-hover: #1e3553;
+  --secondary-color: #4F758C;
+  --secondary-hover: #3b5a6d;
+  --sand-accent: #F2BE7E;
+  --rust-color: #8C4332;
+  --rust-hover: #6e3326;
+  --terracotta-color: #D94436;
+  --terracotta-hover: #b53327;
+  --text-color: #24292f;
+  --text-muted: #57606a;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding-bottom: 40px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* App Header */
+.app-header {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 18px 0;
+  border-bottom: 3px solid var(--terracotta-color);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.logo-wrapper {
+  flex-shrink: 0;
+}
+
+.jersey-mikes-logo {
+  width: 130px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+}
+
+.header-text h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.header-text .subtitle {
+  font-size: 0.9rem;
+  color: var(--sand-accent);
+}
+
+
+/* Flowchart Tracker Bar */
+.tracker-bar {
+  background-color: #e6ebf0;
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 0;
+  overflow-x: auto;
+}
+
+.tracker-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.step-badge {
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 14px;
+  background-color: #d1dbe4;
+  color: #334455;
+  font-weight: bold;
+}
+
+.step-badge.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+/* Main Content & Cards */
+.main-content {
+  margin-top: 25px;
+}
+
+.step-card {
+  display: none; /* hidden by default, toggled by JS */
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 25px;
+  box-shadow: 0 2px 6px rgba(45, 75, 115, 0.08);
+}
+
+.step-card.active {
+  display: block;
+}
+
+.step-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--sand-accent);
+  padding-bottom: 8px;
+}
+
+.step-card > p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 1rem;
+}
+
+.form-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(79, 117, 140, 0.2);
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Custom Cards / Options */
+.option-grid {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card-option {
+  flex: 1;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.card-option:hover {
+  background-color: #f0f4f8;
+  border-color: var(--secondary-color);
+}
+
+.card-option input[type="radio"] {
+  margin-top: 4px;
+  accent-color: var(--primary-color);
+}
+
+.card-body h3 {
+  font-size: 1.05rem;
+  margin-bottom: 3px;
+  color: var(--primary-color);
+}
+
+.card-body p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Radio & Checkbox Containers */
+.options-container, .checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.item-option {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.item-option:hover {
+  background-color: #f7f9fa;
+  border-color: var(--secondary-color);
+}
+
+.item-option input[type="radio"],
+.item-option input[type="checkbox"] {
+  accent-color: var(--primary-color);
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.item-price {
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+/* Ingredient Category */
+.ingredient-category {
+  margin-bottom: 20px;
+}
+
+.ingredient-category h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+/* Summary & Callout Boxes */
+.summary-box, .menu-intro-card, .cart-box, .checkout-summary {
+  background-color: #f5f8fa;
+  border: 1px solid #dbe3eb;
+  border-left: 5px solid var(--primary-color);
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.branch-callout {
+  border-left: 5px solid var(--rust-color);
+  background-color: #fdf6f0;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.confirmation-box {
+  background-color: #fdf5f4;
+  border: 1px solid var(--terracotta-color);
+  padding: 20px;
+  border-radius: var(--radius);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confirmation-box h3 {
+  color: var(--terracotta-color);
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 25px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: #ffffff;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--secondary-hover);
+}
+
+.btn-accent {
+  background-color: var(--rust-color);
+  color: #ffffff;
+}
+
+.btn-accent:hover:not(:disabled) {
+  background-color: var(--rust-hover);
+}
+
+.btn-success {
+  background-color: var(--terracotta-color);
+  color: #ffffff;
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: var(--terracotta-hover);
+}
+
+/* Cart & Checkout Items */
+.cart-item {
+  border-bottom: 1px dashed var(--border-color);
+  padding: 10px 0;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.cart-item-details {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.cart-total {
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 2px solid var(--sand-accent);
+  color: var(--rust-color);
+}
+
+/* Live Sub Sandwich Visual Ingredient Preview */
+.sub-visual-preview {
+  background-color: #fdfaf6;
+  border: 2px solid var(--sand-accent);
+  border-radius: var(--radius);
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.preview-header {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.sub-stack-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.placeholder-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.sub-layer-badge {
+  width: 100%;
+  max-width: 450px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.sub-layer-badge .layer-icon {
+  font-size: 1.1rem;
+}
+
+.layer-bread-top, .layer-bread-bottom {
+  background-color: #fce4be;
+  color: #7a4812;
+  border: 1px solid #e0b074;
+}
+
+.layer-protein {
+  background-color: #fbe3de;
+  color: #8C4332;
+  border: 1px solid #e2a89c;
+}
+
+.layer-cheese {
+  background-color: #fff4cc;
+  color: #8a6d00;
+  border: 1px solid #edd066;
+}
+
+.layer-veggie {
+  background-color: #e2f3e4;
+  color: #1b5e20;
+  border: 1px solid #a3d9a7;
+}
+
+.layer-sauce {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  border: 1px solid #aecbfa;
+}
+
+.cart-item-icons {
+  font-size: 1rem;
+  margin-left: 8px;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

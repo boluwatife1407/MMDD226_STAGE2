@@ -1,0 +1,43 @@
+{
+  "deliveryMethods": ["Delivery", "Pickup"],
+  "breads": [
+    { "id": "b1", "name": "Italian White", "price": 5.99, "icon": "🥖" },
+    { "id": "b2", "name": "Whole Wheat", "price": 6.49, "icon": "🌾" },
+    { "id": "b3", "name": "Italian Herbs & Cheese", "price": 6.99, "icon": "🧀🥖" },
+    { "id": "b4", "name": "Honey Oat", "price": 6.79, "icon": "🍯🌾" }
+  ],
+  "ingredients": {
+    "proteins": [
+      { "id": "p1", "name": "Turkey Breast", "price": 2.00, "icon": "🦃" },
+      { "id": "p2", "name": "Roast Beef", "price": 2.50, "icon": "🥩" },
+      { "id": "p3", "name": "Tuna", "price": 2.00, "icon": "🐟" },
+      { "id": "p4", "name": "Veggie Patty", "price": 1.75, "icon": "🧆" }
+    ],
+    "cheeses": [
+      { "id": "c1", "name": "American Cheese", "price": 0.50, "icon": "🧀" },
+      { "id": "c2", "name": "Cheddar", "price": 0.50, "icon": "🧀" },
+      { "id": "c3", "name": "Provolone", "price": 0.75, "icon": "🧀" },
+      { "id": "c4", "name": "Swiss", "price": 0.75, "icon": "🧀" }
+    ],
+    "veggies": [
+      { "id": "v1", "name": "Lettuce", "price": 0.00, "icon": "🥬" },
+      { "id": "v2", "name": "Tomatoes", "price": 0.00, "icon": "🍅" },
+      { "id": "v3", "name": "Cucumbers", "price": 0.00, "icon": "🥒" },
+      { "id": "v4", "name": "Green Peppers", "price": 0.00, "icon": "🫑" },
+      { "id": "v5", "name": "Onions", "price": 0.00, "icon": "🧅" },
+      { "id": "v6", "name": "Pickles", "price": 0.00, "icon": "🥒" }
+    ],
+    "sauces": [
+      { "id": "s1", "name": "Mayonnaise", "price": 0.00, "icon": "🧴" },
+      { "id": "s2", "name": "Honey Mustard", "price": 0.00, "icon": "🍯" },
+      { "id": "s3", "name": "Chipotle Southwest", "price": 0.00, "icon": "🌶️" },
+      { "id": "s4", "name": "Oil & Vinegar", "price": 0.00, "icon": "🫗" }
+    ]
+  },
+  "drinks": [
+    { "id": "d1", "name": "Fountain Soda (16 oz)", "price": 1.99, "icon": "🥤" },
+    { "id": "d2", "name": "Bottled Water", "price": 1.49, "icon": "💧" },
+    { "id": "d3", "name": "Fresh Iced Tea", "price": 2.29, "icon": "🍹" },
+    { "id": "d4", "name": "Lemonade", "price": 2.29, "icon": "🍋" }
+  ]
+}

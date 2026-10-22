@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jersey Mike's Subs - Online Ordering Prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Header with Jersey Mike's Logo -->
+  <header class="app-header">
+    <div class="container header-container">
+      <div class="logo-wrapper">
+        <svg class="jersey-mikes-logo" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jersey Mike's Subs Logo">
+          <!-- Outer Red Border Oval -->
+          <ellipse cx="150" cy="90" rx="142" ry="82" fill="#D94436" />
+          <!-- Inner White Border Oval -->
+          <ellipse cx="150" cy="90" rx="136" ry="76" fill="#ffffff" />
+          <!-- Inner Navy Oval -->
+          <ellipse cx="150" cy="90" rx="130" ry="70" fill="#2D4B73" />
+          
+          <!-- "SINCE 1956" Arc Text / Top Text -->
+          <text x="150" y="44" text-anchor="middle" fill="#ffffff" font-family="'Arial Black', sans-serif" font-size="13" font-weight="900" letter-spacing="3">SINCE 1956</text>
+          
+          <!-- "Jersey" Text -->
+          <text x="150" y="82" text-anchor="middle" fill="#D94436" stroke="#ffffff" stroke-width="4" paint-order="stroke fill" font-family="'Impact', 'Arial Black', sans-serif" font-size="40" font-weight="bold" font-style="italic">Jersey</text>
+          
+          <!-- "Mike's" Text -->
+          <text x="150" y="118" text-anchor="middle" fill="#D94436" stroke="#ffffff" stroke-width="4" paint-order="stroke fill" font-family="'Impact', 'Arial Black', sans-serif" font-size="40" font-weight="bold" font-style="italic">Mike's</text>
+          
+          <!-- "SUBS" Bottom Text -->
+          <text x="150" y="146" text-anchor="middle" fill="#ffffff" font-family="'Arial Black', sans-serif" font-size="18" font-weight="900" letter-spacing="5">SUBS</text>
+        </svg>
+      </div>
+      <div class="header-text">
+        <h1>Jersey Mike's Subs</h1>
+        <p class="subtitle">Online Ordering Prototype </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Flowchart Tracker Bar -->
+  <div class="tracker-bar">
+    <div class="container tracker-container" id="trackerSteps">
+      <span class="step-badge active" data-step="1">1. Delivery Method</span>
+      <span class="step-badge" data-step="2">2. Address</span>
+      <span class="step-badge" data-step="3">3. Menu</span>
+      <span class="step-badge" data-step="4">4. Choose Bread</span>
+      <span class="step-badge" data-step="5">5. Choose Ingredients</span>
+      <span class="step-badge" data-step="6">6. Choose Drinks</span>
+      <span class="step-badge" data-step="7">7. Cart</span>
+      <span class="step-badge" data-step="8">8. Checkout</span>
+    </div>
+  </div>
+
+  <main class="container main-content">
+
+    <!-- STEP 1: START / DELIVERY METHOD -->
+    <section id="step-1" class="step-card active">
+      <h2>Step 1: Start & Select Delivery Method</h2>
+      <p>Please choose how you would like to receive your order from Jersey Mike's.</p>
+      
+      <div class="option-grid">
+        <label class="card-option">
+          <input type="radio" name="deliveryMethod" value="Delivery" checked>
+          <div class="card-body">
+            <h3>🚚 Delivery</h3>
+            <p>Delivered directly to your door.</p>
+          </div>
+        </label>
+        <label class="card-option">
+          <input type="radio" name="deliveryMethod" value="Pickup">
+          <div class="card-body">
+            <h3>🏬 Pickup</h3>
+            <p>Pick up your order at your nearest store.</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="btn btn-primary" onclick="goToStep(2)">Next: Input Address &rarr;</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: INPUT ADDRESS -->
+    <section id="step-2" class="step-card">
+      <h2>Step 2: Input Address</h2>
+      <p>Enter your address details to proceed to the menu.</p>
+      
+      <form id="addressForm" onsubmit="event.preventDefault(); goToStep(3);">
+        <div class="form-group">
+          <label for="streetAddress">Street Address</label>
+          <input type="text" id="streetAddress" placeholder="e.g. 123 Main Street" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="e.g. Springfield" required>
+          </div>
+          <div class="form-group">
+            <label for="zipCode">Postal / Zip Code</label>
+            <input type="text" id="zipCode" placeholder="e.g. 12345" required>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="btn btn-secondary" onclick="goToStep(1)">&larr; Back</button>
+          <button type="submit" class="btn btn-primary">Next: View Menu &rarr;</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- STEP 3: VIEW MENU -->
+    <section id="step-3" class="step-card">
+      <h2>Step 3: Menu Overview</h2>
+      <p>Welcome to Jersey Mike's! Review your fulfillment details and start building your sub.</p>
+
+      <div class="summary-box">
+        <p><strong>Fulfillment Method:</strong> <span id="summaryDelivery">Delivery</span></p>
+        <p><strong>Address:</strong> <span id="summaryAddress">Not set</span></p>
+      </div>
+
+      <div class="menu-intro-card">
+        <h3>Custom Sub Builder</h3>
+        <p>Build your sub step-by-step with your choice of freshly baked bread, meats, cheeses, veggies, and drinks.</p>
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="btn btn-secondary" onclick="goToStep(2)">&larr; Back</button>
+        <button type="button" class="btn btn-primary" onclick="goToStep(4)">Start Order: Choose Sub Bread &rarr;</button>
+      </div>
+    </section>
+
+    <!-- STEP 4: CHOOSE SUB BREAD -->
+    <section id="step-4" class="step-card">
+      <h2>Step 4: Choose Sub Bread</h2>
+      <p>Select your favorite bread type for your custom sub.</p>
+
+      <div id="breadList" class="options-container">
+        <!-- Loaded via JavaScript -->
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="btn btn-secondary" onclick="goToStep(3)">&larr; Back to Menu</button>
+        <button type="button" class="btn btn-primary" onclick="goToStep(5)">Next: Choose Ingredients &rarr;</button>
+      </div>
+    </section>
+
+    <!-- STEP 5: CHOOSE INGREDIENTS -->
+    <section id="step-5" class="step-card">
+      <h2>Step 5: Choose Ingredients</h2>
+      <p>Select your proteins, cheeses, vegetables, and sauces.</p>
+
+      <!-- Live Visual Sub Sandwich Ingredient Preview -->
+      <div class="sub-visual-preview">
+        <div class="preview-header">
+          <span>🥪 Live Sandwich Preview (Added Ingredients):</span>
+        </div>
+        <div id="liveSubStack" class="sub-stack-container">
+          <span class="placeholder-text">Select ingredients below to build your sub layers...</span>
+        </div>
+      </div>
+
+      <div class="ingredient-category">
+        <h3>Proteins (Select One or More)</h3>
+        <div id="proteinList" class="checkbox-grid"></div>
+      </div>
+
+      <div class="ingredient-category">
+        <h3>Cheese</h3>
+        <div id="cheeseList" class="checkbox-grid"></div>
+      </div>
+
+      <div class="ingredient-category">
+        <h3>Vegetables</h3>
+        <div id="veggieList" class="checkbox-grid"></div>
+      </div>
+
+      <div class="ingredient-category">
+        <h3>Sauces</h3>
+        <div id="sauceList" class="checkbox-grid"></div>
+      </div>
+
+      <!-- Flowchart indicates a decision branch here to add directly to cart & view cart -->
+      <div class="branch-callout">
+        <p><strong>Quick Checkout Option:</strong> You can add this sub to cart now and view cart, or continue to select drinks.</p>
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="btn btn-secondary" onclick="goToStep(4)">&larr; Back to Bread</button>
+        <button type="button" class="btn btn-accent" onclick="addCurrentSubToCart(); goToStep(7);">Add Sub to Cart & View Cart 🛒</button>
+        <button type="button" class="btn btn-primary" onclick="goToStep(6)">Next: Choose Drinks &rarr;</button>
+      </div>
+    </section>
+
+    <!-- STEP 6: CHOOSE DRINKS -->
+    <section id="step-6" class="step-card">
+      <h2>Step 6: Choose Drinks</h2>
+      <p>Select beverages to complete your meal (Optional).</p>
+
+      <div id="drinkList" class="checkbox-grid">
+        <!-- Loaded via JavaScript -->
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="btn btn-secondary" onclick="goToStep(5)">&larr; Back to Ingredients</button>
+        <button type="button" class="btn btn-primary" onclick="addCurrentSubToCart(); goToStep(7);">Add Order to Cart & View Cart 🛒</button>
+      </div>
+    </section>
+
+    <!-- STEP 7: VIEW CART -->
+    <section id="step-7" class="step-card">
+      <h2>Step 7: View Cart</h2>
+      <p>Review the items in your shopping cart before checkout.</p>
+
+      <div id="cartContents" class="cart-box">
+        <!-- Dynamic Cart Content -->
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="btn btn-secondary" onclick="resetBuilder(); goToStep(4);">+ Add Another Sub</button>
+        <button type="button" class="btn btn-primary" id="btnCheckout" onclick="goToStep(8)" disabled>Proceed to Checkout &rarr;</button>
+      </div>
+    </section>
+
+    <!-- STEP 8: CHECKOUT -->
+    <section id="step-8" class="step-card">
+      <h2>Step 8: Checkout</h2>
+      <p>Confirm your order details and complete your purchase.</p>
+
+      <div class="checkout-summary">
+        <h3>Order Summary</h3>
+        <div id="checkoutDetails"></div>
+      </div>
+
+      <div id="orderConfirmation" class="confirmation-box hidden">
+        <h3>🎉 Order Placed Successfully!</h3>
+        <p>Thank you for ordering with Jersey Mike's Subs. Your order reference is <strong id="orderRef">#0000</strong>.</p>
+        <button type="button" class="btn btn-primary" onclick="restartApp()">Start New Order</button>
+      </div>
+
+      <div class="action-buttons" id="checkoutActions">
+        <button type="button" class="btn btn-secondary" onclick="goToStep(7)">&larr; Back to Cart</button>
+        <button type="button" class="btn btn-success" onclick="placeOrder()">Place Order</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <p>Jersey Mike's Subs Prototype | Designed based on flowchart requirements</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
